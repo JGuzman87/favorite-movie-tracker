@@ -32,11 +32,11 @@ const MovieForm = ({ id }) => {
     <>
       <form className={styles.form} onSubmit={handleSubmit}>
         <label htmlFor="title">Title: </label>
-        <input type="text" name="title" value={movie.title} onChange={handleChange} />
+        <input type="text" name="title" value={movie.title} onChange={handleChange} required/>
         <label htmlFor="year">Year: </label>
-        <input type="text" name="year" value={movie.year} onChange={handleChange} />
+        <input type="text" name="year" value={movie.year} onChange={handleChange} reaquired />
         <label htmlFor="genre">Genre: </label>
-        <input type="text" name="genre" value={movie.genre} onChange={handleChange} />
+        <input type="text" name="genre" value={movie.genre} onChange={handleChange} required/>
         <button type='submit'>Submit</button>
       </form>
     </>
