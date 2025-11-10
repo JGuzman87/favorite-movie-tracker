@@ -1,9 +1,8 @@
 import { useState } from "react";
 import styles from "./MovieForm.module.css";
-const MovieForm = ({ id }) => {
+const MovieForm = () => {
 
   const [movie, setMovie] = useState({
-    id: id,
     title: "",
     year: "",
     genre: "",
@@ -19,12 +18,19 @@ const MovieForm = ({ id }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(movie)
-    setMovie({
+    const newMovie = { ...movie, id: crypto.randomUUID() };
+
+    console.log(newMovie)
+
+    localStorage.setItem('movie', JSON.stringify(newMovie));
+
+    setMovie(prev => ({
+      ...prev,
       title: "",
       year: "",
       genre: "",
-    });
+
+    }));
 
   }
 
@@ -34,7 +40,7 @@ const MovieForm = ({ id }) => {
         <label htmlFor="title">Title: </label>
         <input type="text" name="title" value={movie.title} onChange={handleChange} required/>
         <label htmlFor="year">Year: </label>
-        <input type="text" name="year" value={movie.year} onChange={handleChange} reaquired />
+        <input type="text" name="year" value={movie.year} onChange={handleChange} required />
         <label htmlFor="genre">Genre: </label>
         <input type="text" name="genre" value={movie.genre} onChange={handleChange} required/>
         <button type='submit'>Submit</button>
