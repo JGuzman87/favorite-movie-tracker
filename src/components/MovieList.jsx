@@ -1,14 +1,21 @@
 import styles from "./MovieList.module.css";
-const MovieList = ({movies}) => {
+const MovieList = ({movies, deleteMovie}) => {
 
 
   return (
-    <div className={styles.list}>
-      <ul>
-    {movies.length > 0 && movies.map(movie => <li key={movie.id}>{movie.title}</li>)}
-      </ul>
-     
-    </div>
+    <>
+      {movies.length > 0 &&
+        movies.map((movie) => (
+          <div className={styles.list}>
+            <div key={movie.id}>
+              <p>{movie.title}</p>
+              <p>{movie.year}</p>
+              <p>{movie.genre}</p>
+              <button type="button" onClick={() => deleteMovie(movie.id)}>Delete</button>
+            </div>
+          </div>
+        ))}
+    </>
   );
 };
 

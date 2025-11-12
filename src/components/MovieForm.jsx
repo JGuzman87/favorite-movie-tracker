@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./MovieForm.module.css";
 const MovieForm = ({ addMovie }) => {
   const [movie, setMovie] = useState({

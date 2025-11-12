@@ -21,10 +21,16 @@ function App() {
     localStorage.setItem("movie", JSON.stringify(updatedMovie));
   };
 
+  const handleDelete = (id) => {
+    const movieToDelete = savedMovies.filter((movie) => movie.id !== id );
+    setSavedMovies(movieToDelete);
+    localStorage.setItem('movie', JSON.stringify())
+  }
+
   return (
     <div className="app-container">
       <MovieForm addMovie={handleAddMovie} />
-      <MovieList movies={savedMovies} />
+      <MovieList movies={savedMovies} deleteMovie={handleDelete}/>
     </div>
   );
 }
